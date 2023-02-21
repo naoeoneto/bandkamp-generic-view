@@ -5,7 +5,7 @@ class Album(models.Model):
     class Meta:
         ordering = ["id"]
 
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, blank=False)
     year = models.PositiveSmallIntegerField()
 
     user = models.ForeignKey(

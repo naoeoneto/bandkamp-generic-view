@@ -15,7 +15,6 @@ class UserView(APIView):
         serializer.is_valid(raise_exception=True)
 
         serializer.save()
-
         return Response(serializer.data, status.HTTP_201_CREATED)
 
 
@@ -40,7 +39,6 @@ class UserDetailView(APIView):
         Atualização de usuário
         """
         user = get_object_or_404(User, pk=pk)
-
         self.check_object_permissions(request, user)
 
         serializer = UserSerializer(user, data=request.data, partial=True)

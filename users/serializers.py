@@ -50,16 +50,12 @@ class UserSerializer(serializers.ModelSerializer):
 
     def update(self, instance: User, validated_data: dict) -> User:
         password = validated_data.pop("password", None)
-        # a = instance.password
-        # print(2, a)
         if password:
             instance.set_password(password)
             instance.save()
-        #     print(6, instance.check_password(password))
+        
         for key, value in validated_data.items():
             setattr(instance, key, value)
         instance.save()
-        # b = instance.password
-        # print(3, b)
-        # print(a == b)
+
         return instance
